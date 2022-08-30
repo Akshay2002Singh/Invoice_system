@@ -15,34 +15,35 @@
         Elite Biling System
     </div>
     <div class="container">
-        <form method="post" id="main_form">
+        <form method="post" action="/invoice_data" id="main_form">
+            {% csrf_token %}
             <div class="mb-3">
                 <label for="c_name" class="form-label">Customer Name</label>
-                <input type="text" class="form-control" id="c_name">
+                <input type="text" class="form-control" id="c_name" name="name">
             </div>
             <div class="mb-3">
                 <label for="c_number" class="form-label">Mobile Number</label>
-                <input type="text" class="form-control" id="c_number">
+                <input type="text" class="form-control" id="c_number" name="number">
             </div>
             <div class="mb-3">
                 <label for="c_email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="c_email">
+                <input type="email" class="form-control" id="c_email" name="email">
             </div>
             <div class="mb-3">
-                <label for="c_email" class="form-label">Address</label>
-                <input type="email" class="form-control" id="c_email">
+                <label for="c_add" class="form-label">Address</label>
+                <input type="email" class="form-control" id="c_add" name="address" >
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="items_id" >
+                <input type="text" class="form-control" id="items_id" name="items">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="catagories_id">
+                <input type="text" class="form-control" id="catagories_id" name="catagories">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="prices_id">
+                <input type="text" class="form-control" id="prices_id" name="prices">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="quantities_id">
+                <input type="text" class="form-control" id="quantities_id" name="quantities">
             </div>
 
             <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
