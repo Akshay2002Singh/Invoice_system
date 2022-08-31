@@ -1,5 +1,4 @@
 from cmath import phase
-import email
 from django.db import models
 
 # Create your models here.
@@ -15,6 +14,6 @@ class invoice_details(models.Model):
     d_quantities = models.TextField()
 
     def __str__(self):
-        return self.d_name+" "+self.id
+        return f"{self.d_name} {self.id}"
 
 
