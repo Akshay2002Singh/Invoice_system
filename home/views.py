@@ -1,7 +1,12 @@
+from hashlib import new
 from http.client import HTTPResponse
 from django.shortcuts import render,redirect
 from home.models import invoice_details
 import json
+from .process import html_to_pdf
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+
 
 # Create your views here.
 def index(request):
@@ -35,8 +40,8 @@ def all_user_details(request):
 
 
 def generate_invoice(request,id):
-    print(id)
-    query = invoice_details.objects.get(id=1)
+    # print(id)
+    query = invoice_details.objects.get(id=id)
 
     items = json.loads(query.d_items)
     catagories = json.loads(query.d_catagoried)
@@ -59,5 +64,41 @@ def generate_invoice(request,id):
     new_context["data"] = temp
     new_context["g_total"] = total
 
-    print(new_context)
+    # print(new_context)
+
+
     return render(request,"invoice.html",context=new_context)
+
+
+def generate_pdf(request,id):
+    # print(id)
+    query = invoice_details.objects.get(id=id)
+
+    items = json.loads(query.d_items)
+    catagories = json.loads(query.d_catagoried)
+    prices = json.loads(query.d_prices)
+    quantity = json.loads(query.d_quantities)
+
+    new_context={
+        "id" : query.id,
+        "d_name" : query.d_name,
+        "d_email" : query.d_email,
+        "d_phone" : query.d_phone,
+        "d_address" : query.d_address,
+    }
+    temp = []
+    total = 0
+    for i in range(len(items)):
+        temp.append({"item":items[i],"catagory":catagories[i],"price":prices[i],"quantity":quantity[i],"total":prices[i]*quantity[i]})
+        total += prices[i]*quantity[i]
+    
+    new_context["data"] = temp
+    new_context["g_total"] = total
+
+    # print(new_context)
+
+    open('templates/temp.html', "w").write(render_to_string('invoice.html',new_context ))
+    pdf = html_to_pdf('temp.html')
+    return HttpResponse(pdf, content_type='application/pdf')
+
+    # return render(request,"invoice.html",context=new_context)

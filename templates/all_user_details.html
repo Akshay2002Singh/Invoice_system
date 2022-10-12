@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    {% include "nav.html" %}
     <div class="alert alert-danger text-center fs-1 fw-bolder mb-0" role="alert">
         Elite Biling System
     </div>
@@ -20,7 +21,8 @@
                 <th scope="col" class="py-3">Name</th>
                 <th scope="col" class="py-3">Phone Number</th>
                 <th scope="col" class="py-3">Email</th>
-                <th scope="col" class="py-3">Generate Invoice</th>
+                <th scope="col" class="py-3">View Invoice</th>
+                <th scope="col" class="py-3">Download Invoice</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +31,9 @@
                 <th scope="row" class="py-4">{{q.d_name}}</th>
                 <td class="py-4">{{q.d_phone}}</td>
                 <td class="py-4">{{q.d_email}}</td>
-                <td class="pt-3"><a class="btn btn-outline-danger" href="/generate_bill/{{q.id}}" role="button">Generate Invoice</a>
+                <td class="pt-3"><a class="btn btn-outline-danger" href="/generate_bill/{{q.id}}" role="button" target="_blank">View</a>
+                </td>
+                <td class="pt-3"><a class="btn btn-outline-danger" href="/generate_pdf/{{q.id}}" role="button" target="_blank">Download</a>
                 </td>
             </tr>
             {% endfor %}

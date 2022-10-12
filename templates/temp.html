@@ -210,11 +210,11 @@ background-color: #f7f7ff;
                                 <div class="row contacts">
                                     <div class="col invoice-to">
                                         <div class="text-gray-light">INVOICE TO:</div>
-                                        <h2 class="to">{{d_name}}</h2>
-                                        <div class="address">Address : {{d_address}}</div>
-                                        <div class="email">Email : <a href="mailto:john@example.com">{{d_email}}</a>
+                                        <h2 class="to">Akshay Singh</h2>
+                                        <div class="address">Address : andher nagri</div>
+                                        <div class="email">Email : <a href="mailto:john@example.com">2002@gmail.com</a>
                                         </div>
-                                        <div class="address">Phone Number : {{d_phone}}</div>
+                                        <div class="address">Phone Number : 9305</div>
                                     </div>
                                 </div>
                                 <table>
@@ -228,21 +228,33 @@ background-color: #f7f7ff;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for i in data %}
+                                        
                                         <tr>
-                                            <td class="no">{{i.catagory}}</td>
+                                            <td class="no">Grocery</td>
                                             <td class="text-left">
-                                            {{i.item}} 
+                                            pen 
                                             </td>
-                                            <td class="unit">Rs {{i.price}}</td>
-                                            <td class="qty">{{i.quantity}}</td>
-                                            <td class="total">RS {{i.total}}</td>
+                                            <td class="unit">Rs 5</td>
+                                            <td class="qty">2</td>
+                                            <td class="total">RS 10</td>
                                         </tr>
-                                        {% endfor %}
+                                        
+                                        <tr>
+                                            <td class="no">Electronics</td>
+                                            <td class="text-left">
+                                            mouse 
+                                            </td>
+                                            <td class="unit">Rs 499</td>
+                                            <td class="qty">1</td>
+                                            <td class="total">RS 499</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                    <tbody>
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">SUBTOTAL</td>
-                                            <td>Rs {{g_total}}</td>
+                                            <td>Rs 509</td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"></td>
@@ -252,26 +264,9 @@ background-color: #f7f7ff;
                                         <tr>
                                             <td colspan="2"></td>
                                             <td colspan="2">GRAND TOTAL</td>
-                                            <td>Rs {{g_total}}</td>
+                                            <td>Rs 509</td>
                                         </tr>
                                     </tbody>
-                                    <!-- <tfoot>
-                                        <tr>
-                                            <td colspan="2"></td>
-                                            <td colspan="2">SUBTOTAL</td>
-                                            <td>Rs {{g_total}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"></td>
-                                            <td colspan="2">Extra Charges</td>
-                                            <td>Rs 0.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"></td>
-                                            <td colspan="2">GRAND TOTAL</td>
-                                            <td>Rs {{g_total}}</td>
-                                        </tr>
-                                    </tfoot> -->
                                 </table>
                                 <div class="thanks">Thank you!</div>
                             </main>
