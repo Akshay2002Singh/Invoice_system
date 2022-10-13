@@ -22,19 +22,19 @@
                 </tr>
                 <tr>
                   <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;" align="left">
-                    <strong>Name:</strong> Akshay Singh </td>
+                    <strong>Name:</strong> {{d_name}} </td>
                 </tr>
                 <tr>
                   <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;" align="left">
-                    <strong>Address: </strong> andher nagri</td>
+                    <strong>Address: </strong> {{d_address}}</td>
                 </tr>
                 <tr>
                   <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;" align="left">
-                    <strong>Phone: </strong> 9305</td>
+                    <strong>Phone: </strong> {{d_phone}}</td>
                 </tr>
                 <tr>
                   <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px;" align="left">
-                    <strong>Email: </strong> 2002@gmail.com </td>
+                    <strong>Email: </strong> {{d_email}} </td>
                 </tr>
                 <tr>
                   <td>&nbsp;</td>
@@ -68,43 +68,25 @@
               style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
               width="30%" align="center">TOTAL</td>
           </tr>
-          
+          {% for i in data %}
           <tr>
             <td
               style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-left:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
-              height="32" align="center"> pen </td>
+              height="32" align="center"> {{i.item}} </td>
             <td
               style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
-              align="center">Grocery</td>
+              align="center">{{i.catagory}}</td>
             <td
               style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
-              align="center">Rs 5</td>
+              align="center">Rs {{i.price}}</td>
             <td
               style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
-              align="center">2</td>
+              align="center">{{i.quantity}}</td>
             <td
               style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
-              align="center">RS 10</td>
+              align="center">RS {{i.total}}</td>
           </tr>
-          
-          <tr>
-            <td
-              style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-left:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
-              height="32" align="center"> mouse </td>
-            <td
-              style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
-              align="center">Electronics</td>
-            <td
-              style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
-              align="center">Rs 499</td>
-            <td
-              style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
-              align="center">1</td>
-            <td
-              style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top: 4px;"
-              align="center">RS 499</td>
-          </tr>
-          
+          {% endfor %}
           <tr>
             <td></td>
             <td></td>
@@ -113,7 +95,7 @@
               height="32" align="center" colspan="2">GRAND TOTAL</td>
             <td
               style="font-family:Verdana, Geneva, sans-serif; font-weight:bolder; font-size:13px; padding-top: 5px; font-size: 19px;"
-              height="32" align="center">Rs 509</td>
+              height="32" align="center">Rs {{g_total}}</td>
 
           </tr>
         </table>

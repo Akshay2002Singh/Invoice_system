@@ -97,7 +97,7 @@ def generate_pdf(request,id):
 
     # print(new_context)
 
-    open('templates/temp.html', "w").write(render_to_string('invoice.html',new_context ))
+    open('templates/temp.html', "w").write(render_to_string('print_invoice.html',new_context ))
     pdf = html_to_pdf('temp.html')
     return HttpResponse(pdf, content_type='application/pdf')
 
