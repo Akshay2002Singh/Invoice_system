@@ -32,7 +32,7 @@
             </div>
             <div class="mb-3">
                 <label for="c_add" class="form-label">Address</label>
-                <input type="email" class="form-control" id="c_add" name="address">
+                <input type="email" class="form-control" id="c_add" name="address" >
             </div>
             <div class="mb-3">
                 <input type="text" class="form-control" id="items_id" name="items" hidden>
@@ -67,10 +67,10 @@
                 <input type="number" class="form-control price_class" placeholder="Price">
             </div>
             <div class="mb-3">
-                <input type="number" class="form-control quantity_class" placeholder="Quantity">
+                <input type="number" class="form-control quantity_class"  placeholder="Quantity">
             </div>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="">
             <button type="button" class="btn btn-danger mx-1 px-4" onclick="add_item()">Add Item</button>
             <button type="button" class="btn btn-danger mx-1 px-5" onclick="submit_form()">Submit</button>
 
@@ -83,6 +83,7 @@
 
 
     <script>
+        var count = 1;
         var item_html = `<div class="mb-3">
                 <input type="text" class="form-control item_class" placeholder="Item Name">
             </div>
@@ -100,7 +101,6 @@
                 <input type="number" class="form-control quantity_class"  placeholder="Quantity">
             </div>`
         function add_item() {
-            let count;
             var main_box = document.getElementById("item_box").innerHTML;
             var items = new Array();
             var catagories = new Array();
@@ -110,9 +110,8 @@
             var g_price = document.getElementsByClassName("price_class")
             var g_quantity = document.getElementsByClassName("quantity_class")
             var g_category = document.getElementsByClassName("catagory_class")
-            count = g_item.length;
-            for (var i = 0; i < count; ++i) {
-                items[i] = g_item[i].value
+            for(var i=0;i<count;++i) {
+                items[i]=g_item[i].value
                 catagories[i] = g_category[i].value
                 prices[i] = g_price[i].value
                 quantities[i] = g_quantity[i].value
@@ -120,68 +119,19 @@
             count = count + 1;
             var temp_lable = `<div class="alert alert-success text-center fs-5 fw-bolder py-1" role="alert">
                 Item ${count}
-            </div>`;
-            var del_btn = `<button type="button" class="btn btn-primary mb-3" onclick="del_item(${count - 1})">Delete Item</button>`;
-
-            document.getElementById("item_box").innerHTML = main_box + temp_lable + item_html + del_btn
+            </div>`
+            document.getElementById("item_box").innerHTML= main_box + temp_lable + item_html
             g_item = document.getElementsByClassName("item_class")
             g_price = document.getElementsByClassName("price_class")
             g_quantity = document.getElementsByClassName("quantity_class")
             g_category = document.getElementsByClassName("catagory_class")
-            for (var i = 0; i < count - 1; ++i) {
+            for(var i=0;i<count-1;++i) {
                 g_item[i].value = items[i]
-                g_category[i].value = catagories[i]
-                g_price[i].value = prices[i]
-                g_quantity[i].value = quantities[i]
+                g_category[i].value = catagories[i] 
+                g_price[i].value = prices[i] 
+                g_quantity[i].value = quantities[i] 
             }
             // console.log(main_box)
-        }
-
-        function del_item(t) {
-            // get all values and store in array 
-            let count;
-            var main_box;
-            var items = new Array();
-            var catagories = new Array();
-            var prices = new Array();
-            var quantities = new Array();
-            var g_item = document.getElementsByClassName("item_class")
-            var g_price = document.getElementsByClassName("price_class")
-            var g_quantity = document.getElementsByClassName("quantity_class")
-            var g_category = document.getElementsByClassName("catagory_class")
-            count = g_item.length;
-            for (var i = 0; i < count; ++i) {
-                items[i] = g_item[i].value
-                catagories[i] = g_category[i].value
-                prices[i] = g_price[i].value
-                quantities[i] = g_quantity[i].value
-            }
-            items.splice(t, 1);
-            catagories.splice(t, 1);
-            prices.splice(t, 1);
-            quantities.splice(t, 1);
-
-            // render modified dom 
-            main_box = `<div class="alert alert-success text-center fs-5 fw-bolder py-1" role="alert">
-                Item 1
-            </div>` + item_html;
-
-            for (let temp = 1; temp < count - 1; ++temp) {
-                var temp_lable = `<div class="alert alert-success text-center fs-5 fw-bolder py-1" role="alert">
-                    Item ${temp + 1}
-                    </div>`;
-                var del_btn = `<button type="button" class="btn btn-primary mb-3" onclick="del_item(${temp})">Delete Item</button>`;
-                main_box = main_box + temp_lable + item_html + del_btn;
-            }
-            document.getElementById("item_box").innerHTML = main_box;
-
-            for (let i = 0; i < items.length; ++i) {
-                document.getElementsByClassName("item_class")[i].value = items[i]
-                document.getElementsByClassName("catagory_class")[i].value = catagories[i]
-                document.getElementsByClassName("price_class")[i].value = prices[i]
-                document.getElementsByClassName("quantity_class")[i].value = quantities[i]
-            }
-
         }
 
         function submit_form () {
@@ -194,7 +144,7 @@
             var g_quantity = document.getElementsByClassName("quantity_class")
             var g_category = document.getElementsByClassName("catagory_class")
             
-            for(var i=0;i<g_item.length;++i) {
+            for(var i=0;i<count;++i) {
                 items[i]=g_item[i].value
                 catagories[i] = g_category[i].value
                 prices[i] = g_price[i].value
